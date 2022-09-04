@@ -1,0 +1,26 @@
+int rightBinarySearch(vector<int> &v1, int target)
+{
+    if(v1.size() == 0) return -1;
+    int left = 0, right = v1.size();
+    
+    while (left < right)
+    {
+        int mid = left + (right - left) / 2;
+        
+        if(v1[mid] == target)
+            left = mid + 1;
+        else if(v1[mid] < target)
+            left = mid + 1;
+        else if(v1[mid] > target)
+            right = mid;
+        
+    }
+    //检查越界或者没有查找元素时
+    if(right < 0 || v1[right - 1] != target) return -1;
+    
+    return right - 1;//退出循环的时 left = right,v1[left] 一定不等于target了,故需要减1
+    
+    
+}
+
+
