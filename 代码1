@@ -1,0 +1,20 @@
+int binarySearch(int arr[], int target, int len)
+{
+    int left = 0;
+    int right = len - 1;//最后一个元素的索引
+
+    while(left <= right)//左闭右闭区间 ->[left,right]
+    {
+        int mid = left + (right - left) / 2;//为了防止溢出,(right + left ) / 2可能会溢出
+        if(arr[mid] == target)
+            return mid;//找到指定数就立即返回
+        else if(arr[mid] > target)
+            right = mid - 1;
+        else if(arr[mid] < target)
+            left = mid + 1;
+        
+    }
+    return -1;
+    
+}
+
