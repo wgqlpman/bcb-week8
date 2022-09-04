@@ -1,0 +1,27 @@
+int leftBinarySearch(vector<int> &v1, int target)
+{
+    //主要查看左右区间
+    if(v1.size() == 0) return -1;
+    int left = 0;
+    //此时区间是左闭右开->[left,right)
+    int right = v1.size();//right为最后一元素的下一位置，不能取值
+    
+    while(left < right)//Attention
+    {
+        int mid = left + (right - left) / 2;
+        
+        if(v1[mid] == target)
+            right = mid;//Attention
+        else if(v1[mid] > target)
+            right = mid;//Attention
+        else if(v1[mid] < target)
+            left = mid + 1;
+        
+    }
+    //检查越界或者没有查找元素时
+    if(left >= v1.size() || v1[left] != target) return -1;
+    
+    return left;
+  
+}
+
