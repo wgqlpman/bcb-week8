@@ -1,0 +1,26 @@
+int leftBinartSearch_1(vector<int> &v1, int target)
+{
+    if(v1.size() == 0) return -1;
+    int left = 0, right = v1.size() - 1;
+    
+    while(left <= right)//Attention
+    {
+        int mid = left + (right - left) / 2;
+        if(v1[mid] == target)
+            right = mid - 1;//Attention
+        else if (v1[mid] > target)
+            right = mid - 1;//Attention
+        else if(v1[mid] < target)
+            left = mid + 1;
+        
+    }
+    
+    if(left >= v1.size() || v1[left] != target) return -1;
+    
+    return left;
+    
+    
+    
+}
+
+
